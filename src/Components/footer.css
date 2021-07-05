@@ -1,0 +1,15 @@
+.footerStyling {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(90deg, #8360c3 0%, #2ebf91 100%);
+}
+
+.footerstyle {
+  font-family: "Roboto", sans-serif;
+  font-size: 1vw;
+  color: white;
+  text-align: right;
+  padding: 10px;
+}

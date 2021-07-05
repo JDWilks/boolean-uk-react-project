@@ -1,11 +1,18 @@
-import logo from "./logo.svg";
-import "./App.css";
+import MainBody from "./Components/MainBody";
+import Footer from "./Components/Footer";
+import Header from "./Components/Header";
+import React from "react";
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello Nico / Rico / Sergio 🤓</h1>
-      <h2>Heres an 🍎 for the teachers 😇</h2>
+      <section className="mainStylingAll">
+        <Header />
+        <div className="mainBodyGrid">
+          <MainBody />
+        </div>
+        <Footer />
+      </section>
     </div>
   );
 }

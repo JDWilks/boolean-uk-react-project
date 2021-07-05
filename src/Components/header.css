@@ -1,0 +1,14 @@
+.topHeader {
+  background: linear-gradient(90deg, #8360c3 0%, #2ebf91 100%);
+  font-size: 1.5vw;
+  height: 200px;
+  padding: 60px;
+  scroll-snap-align: start;
+  color: white;
+  font-family: "Roboto Mono", monospace;
+}
+
+.applecopy {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2vw;
+}

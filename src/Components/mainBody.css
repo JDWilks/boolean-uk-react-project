@@ -1,0 +1,31 @@
+.mainBodyStyling {
+  background: linear-gradient(90deg, #8360c3 0%, #2ebf91 100%);
+  height: calc(100vh - 260px);
+}
+
+.quoteStyling {
+  padding-left: 60px;
+  padding-top: 20px;
+}
+
+.activityStyle,
+.typeStyle,
+.participantsStyle {
+  font-family: "Roboto", sans-serif;
+  font-style: italic;
+  font-size: 2vw;
+  color: white;
+}
+
+.spanMainQuote {
+  color: black;
+  font-style: none;
+}
+
+.buttonsForSearch {
+  padding: 30px;
+}
+
+.addFavSection {
+  padding: 30px;
+}
