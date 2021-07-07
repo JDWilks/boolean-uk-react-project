@@ -6,6 +6,9 @@
 .quoteStyling {
   padding-left: 60px;
   padding-top: 20px;
+  border: 2px solid;
+  border-style: groove;
+  padding: 60px;
 }
 
 .activityStyle,
@@ -24,8 +27,47 @@
 
 .buttonsForSearch {
   padding: 30px;
+  display: grid;
+  grid-auto-flow: column;
+  text-align: center;
+  grid-gap: 20px;
 }
 
 .addFavSection {
   padding: 30px;
+  display: grid;
+  grid-auto-flow: column;
+}
+
+.addYourOwnButton,
+.viewFavouitesButton,
+.randomButton,
+.type,
+.people,
+.search,
+.addFavouritesButton {
+  border-radius: 5px;
+
+  background-color: #4e4caf; /* Green */
+  border: none;
+  color: white;
+  /* padding: 15px 32px; */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.addYourOwnButton:hover,
+.viewFavouitesButton:hover,
+.addFavouritesButton:hover,
+.randomButton:hover,
+.type:hover,
+.people:hover,
+.search:hover {
+  background-color: #6565eb; /* Green */
+}
+
+.heartIcon {
+  height: 40px;
 }

@@ -2,3 +2,9 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+body {
+  /* background-image: url(https://images.theconversation.com/files/138670/original/image-20160921-21723-zvi9hu.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip);
+  background-repeat: no-repeat;
+  background-size: cover; */
+}

@@ -6,6 +6,8 @@
   scroll-snap-align: start;
   color: white;
   font-family: "Roboto Mono", monospace;
+  /* border: 2px solid black;
+  border-width: 50px; */
 }
 
 .applecopy {
