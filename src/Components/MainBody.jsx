@@ -1,13 +1,16 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import "./mainBody.css";
 import { Link } from "react-router-dom";
 
-function MainBody() {
-  const [randomQuote, setRandomQuote] = useState();
-  const [activtyType, setActivityType] = useState();
-  const [activityNuPeople, setActivityNuPeople] = useState(1);
-  const [favouriteQuote, setFavouriteQuote] = useState();
-
+function MainBody({
+  randomQuote,
+  setRandomQuote,
+  activtyType,
+  setActivityType,
+  activityNuPeople,
+  setActivityNuPeople,
+  setFavouriteQuote,
+}) {
   function randomiseQuotes() {
     return fetch("http://www.boredapi.com/api/activity/").then((response) =>
       response.json()
@@ -19,24 +22,25 @@ function MainBody() {
   }, []);
 
   function searchResultsQuotes() {
-    const url = `http://www.boredapi.com/api/activity?type=${activtyType}&participants=${activityNuPeople}`;
-    console.log("url", url);
     return fetch(
       `http://www.boredapi.com/api/activity?type=${activtyType}&participants=${activityNuPeople}`
     ).then((response) => response.json());
   }
 
-  useEffect(() => {
-    searchResultsQuotes()
-      .then(setRandomQuote)
-      .catch((error) => console.log(error));
-  }, []);
+  // function searchResultsJsonQuotes() {
+  //   return fetch(
+  //     `http://localhost:3030?type=${activtyType}&participants=${activityNuPeople}`
+  //   ).then((response) => response.json());
+  // }
 
   if (!randomQuote) return <h1>Hold your horses....</h1>;
 
   function handleChange(event) {
-    if (event.target.name === "type") setActivityType(event.target.value);
-    else setActivityNuPeople(event.target.value);
+    if (event.target.name === "type") {
+      setActivityType(event.target.value);
+    } else {
+      setActivityNuPeople(event.target.value);
+    }
   }
 
   return (
@@ -82,7 +86,16 @@ function MainBody() {
         <button
           className="search"
           onClick={() => {
-            searchResultsQuotes().then(setRandomQuote);
+            searchResultsQuotes().then((quote) => {
+              console.log("this is the quote", quote);
+              if (quote.error) {
+                alert(
+                  "Please try a different category or participants number - this api is rubbish"
+                );
+              } else {
+                setRandomQuote(quote);
+              }
+            });
           }}
         >
           search
@@ -99,7 +112,7 @@ function MainBody() {
             {randomQuote.type}
           </h2>
           <h3 className="participantsStyle">
-            {" "}
+            {/* {" "} */}
             <span className="spanMainQuote">➡ Participants: </span>
             {randomQuote.participants}
           </h3>
@@ -111,7 +124,7 @@ function MainBody() {
               setFavouriteQuote(randomQuote);
             }}
           >
-            {" "}
+            {/* {" "} */}
             Add this wonderful activity to your favourites
           </button>
 
@@ -125,14 +138,15 @@ function MainBody() {
       </section>
       <section className="addFavSection">
         <div className="addYourOwnButton">
-          <Link to={/addyourown/}>Add Your Own Activity</Link>
+          <Link to="/addyourown">Add Your Own Activity</Link>
         </div>
 
         <div className="viewFavouitesButton">
-          <Link to={/favourites/}>View My Favorites</Link>
+          <Link to="/favourites">View My Favorites</Link>
         </div>
       </section>
     </body>
   );
 }
+
 export default MainBody;

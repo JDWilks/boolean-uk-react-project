@@ -1,3 +1,3 @@
-function Favourites() {}
+function Favourites({ favouriteQuote, setFavouriteQuote }) {}
 
 export default Favourites;
