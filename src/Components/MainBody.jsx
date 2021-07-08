@@ -10,7 +10,32 @@ function MainBody({
   activityNuPeople,
   setActivityNuPeople,
   setFavouriteQuote,
+  favouriteQuote,
 }) {
+  function sendFavToServer() {
+    // fetch("http://localhost:3030/favourites", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(favouriteQuote),
+    // })
+    //   .then((response) => response.json())
+    //   .then((activity) => {
+    //     console.log("great you did it-make it appear on the page now");
+    //   });
+  }
+  useEffect(() => {
+    if (!favouriteQuote) return;
+    fetch("http://localhost:3030/favourites", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(favouriteQuote),
+    })
+      .then((response) => response.json())
+      .then((activity) => {
+        console.log("great you did it-make it appear on the page now");
+      });
+  }, [favouriteQuote]);
+
   function randomiseQuotes() {
     return fetch("http://www.boredapi.com/api/activity/").then((response) =>
       response.json()
@@ -26,12 +51,6 @@ function MainBody({
       `http://www.boredapi.com/api/activity?type=${activtyType}&participants=${activityNuPeople}`
     ).then((response) => response.json());
   }
-
-  // function searchResultsJsonQuotes() {
-  //   return fetch(
-  //     `http://localhost:3030?type=${activtyType}&participants=${activityNuPeople}`
-  //   ).then((response) => response.json());
-  // }
 
   if (!randomQuote) return <h1>Hold your horses....</h1>;
 
@@ -103,46 +122,46 @@ function MainBody({
       </section>
       <section className="quoteStyling">
         <div className="quoteOnPage">
-          <h1 className="activityStyle">
-            <span className="spanMainQuote">➡ Activity: </span>
-            {randomQuote.activity}
-          </h1>
-          <h2 className="typeStyle">
-            <span className="spanMainQuote">➡ Type: </span>
-            {randomQuote.type}
-          </h2>
-          <h3 className="participantsStyle">
-            {/* {" "} */}
-            <span className="spanMainQuote">➡ Participants: </span>
-            {randomQuote.participants}
-          </h3>
-        </div>
-        <div className="favBttnDiv">
-          <button
-            className="addFavouritesButton"
-            onClick={() => {
-              setFavouriteQuote(randomQuote);
-            }}
-          >
-            {/* {" "} */}
-            Add this wonderful activity to your favourites
-          </button>
-
-          <div className="imageDiv">
-            <img
-              src="./icons/undraw_lightbulb_moment_re_ulyo.svg"
-              alt="lightbulb"
-            />
+          <div>
+            <h1 className="activityStyle">
+              <span className="spanMainQuote">➡ Activity: </span>
+              {randomQuote.activity}
+            </h1>
+            <h2 className="typeStyle">
+              <span className="spanMainQuote">➡ Type: </span>
+              {randomQuote.type}
+            </h2>
+            <h3 className="participantsStyle">
+              <span className="spanMainQuote">➡ Participants: </span>
+              {randomQuote.participants}
+            </h3>
           </div>
+          <div className="favBttnDiv">
+            <button
+              className="addFavouritesButton"
+              onClick={() => {
+                setFavouriteQuote(randomQuote);
+              }}
+            >
+              Add this wonderful activity to your favourites
+            </button>
+          </div>
+        </div>
+        <div className="imageDiv">
+          <img src="" alt="lightbulb or something image for here" />
         </div>
       </section>
       <section className="addFavSection">
         <div className="addYourOwnButton">
-          <Link to="/addyourown">Add Your Own Activity</Link>
+          <Link className="addYourOwnText" to="/addyourown">
+            Add Your Own Activity
+          </Link>
         </div>
 
         <div className="viewFavouitesButton">
-          <Link to="/favourites">View My Favorites</Link>
+          <Link className="goToFavText" to="/favourites">
+            View My Favorites
+          </Link>
         </div>
       </section>
     </body>

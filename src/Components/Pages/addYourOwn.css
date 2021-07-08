@@ -1,3 +1,37 @@
 .addYourOwnStyling {
-  display: block;
+  display: grid;
+  grid-template-columns: min-content;
+  justify-content: center;
+  grid-gap: 15px;
+}
+
+.backButton {
+  width: -webkit-fill-available;
+}
+
+.typeAddOwn,
+.peopleAddOwn {
+  border-radius: 5px;
+
+  background: rgb(87, 87, 89);
+  background: linear-gradient(
+    90deg,
+    rgba(87, 87, 89, 1) 0%,
+    rgba(68, 68, 164, 1) 35%,
+    rgba(34, 35, 64, 1) 92%,
+    rgba(19, 20, 20, 1) 100%
+  );
+
+  border: none;
+  color: white;
+
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+}
+
+.addYourOwnStyling {
+  background: linear-gradient(90deg, #8360c3 0%, #2ebf91 100%);
+  height: calc(100vh - 260px);
 }

@@ -1,0 +1,17 @@
+.backButtonFavPage {
+  background: linear-gradient(90deg, #8360c3 0%, #2ebf91 100%);
+  height: calc(100vh - 260px);
+}
+
+/* .quoteOnPageFavPage {
+} */
+
+.activityStyleFavPage {
+  overflow: scroll;
+  padding-left: 60px;
+  line-height: 2;
+  color: white;
+}
+
+background: linear-gradient(90deg, #8360c3 0%, #2ebf91 100%);
+height: calc(100vh - 260px);

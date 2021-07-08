@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import "./addYourOwn.css";
 
 function AddYourOwn() {
@@ -30,68 +32,46 @@ function AddYourOwn() {
 
   return (
     <form className="addYourOwnStyling" onSubmit={handleSubmit}>
+      <h1>Add Your Own Activity To The Database</h1>
       <label htmlFor="fname">First name:</label>
       <input type="text" id="fname" name="fname" />
 
       <label htmlFor="lname">Last name:</label>
       <input type="text" id="lname" name="lname" />
-
+      <p>Activity Type</p>
       <textarea rows="4" cols="50" name="comment" id="comment">
         Enter text here...
       </textarea>
 
-      {/* // activites // */}
-      <p>Activity Type</p>
-      <input type="radio" id="cooking" name="activity" value="cooking" />
-      <label htmlFor="cooking">cooking</label>
+      <label htmlFor="type">Choose a activty type:</label>
 
-      <input type="radio" id="relaxation" name="activity" value="relaxation" />
-      <label htmlFor="relaxation">relaxation</label>
+      <select name="activity" className="typeAddOwn">
+        <option value="cooking">Cooking</option>
+        <option value="relaxation">Relaxation</option>
+        <option value="recreational">Recreational</option>
+        <option value="busywork">Busywork</option>
+        <option value="education">Education</option>
+        <option value="social">Social</option>
+        <option value="charity">Charity</option>
+        <option value="music">Music</option>
+        <option value="diy">DIY</option>
+      </select>
 
-      <input
-        type="radio"
-        id="recreational"
-        name="activity"
-        value="recreational"
-      />
-      <label htmlFor="recreational">recreational</label>
+      <label htmlFor="people">Choose how many people:</label>
 
-      <input type="radio" id="busywork" name="activity" value="busywork" />
-      <label htmlFor="busywork">busywork</label>
-
-      <input type="radio" id="education" name="activity" value="education" />
-      <label htmlFor="education">education</label>
-
-      <input type="radio" id="social" name="activity" value="social" />
-      <label htmlFor="social">social</label>
-
-      <input type="radio" id="charity" name="activity" value="charity" />
-      <label htmlFor="charity">charity</label>
-
-      <input type="radio" id="music" name="activity" value="music" />
-      <label htmlFor="music">music</label>
-
-      <input type="radio" id="diy" name="activity" value="diy" />
-      <label htmlFor="diy">diy</label>
-
-      {/* // participants */}
-      <p>Add Number of Particpants</p>
-      <input type="radio" id="participants1" name="numberOfPeople" value="1" />
-      <label htmlFor="participants1">1</label>
-
-      <input type="radio" id="participants2" name="numberOfPeople" value="2" />
-      <label htmlFor="participants2">2</label>
-
-      <input type="radio" id="participants3" name="numberOfPeople" value="3" />
-      <label htmlFor="participants3">3</label>
-
-      <input type="radio" id="participants4" name="numberOfPeople" value="4" />
-      <label htmlFor="participants4">4</label>
-
-      <input type="radio" id="participants5" name="numberOfPeople" value="5" />
-      <label htmlFor="participants5">5</label>
+      <select name="numberOfPeople" className="peopleAddOwn">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
 
       <input type="submit" value="Submit" />
+
+      <button className="backButton">
+        <Link to="/">Back To The Beautiful Home Page</Link>
+      </button>
     </form>
   );
 }
