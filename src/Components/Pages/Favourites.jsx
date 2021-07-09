@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./favourites.css";
 
-function Favourites({ favouriteQuote, setFavouriteQuote }) {
+function Favourites() {
   const [favOnPage, setFavOnPage] = useState([]);
 
   function getfavFromServer() {
@@ -22,15 +22,6 @@ function Favourites({ favouriteQuote, setFavouriteQuote }) {
     });
   }
 
-  // function deleteDog(dogToDelete) {
-  //   fetch(`http://localhost:4000/dogs/${dogToDelete.id}`, {
-  //     method: "DELETE",
-  //   }).then(() => {
-  //     setDogs(dogs.filter((dog) => dog.id !== dogToDelete.id));
-  //     history.push("/");
-  //   });
-  // }
-
   return (
     <body className="backButtonFavPage">
       <div className="quoteOnPageFavPage">
@@ -47,7 +38,7 @@ function Favourites({ favouriteQuote, setFavouriteQuote }) {
                     deleteFav(fav);
                   }}
                 >
-                  Ⓧ
+                  Ⓧ Delete
                 </button>
               </p>
             ))}

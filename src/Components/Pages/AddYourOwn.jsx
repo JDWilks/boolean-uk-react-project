@@ -21,8 +21,8 @@ function AddYourOwn() {
     const newActivityPost = {
       fname: event.target.fname.value,
       lname: event.target.lname.value,
-      comment: event.target.comment.value,
-      type: event.target.activity.value,
+      activity: event.target.activity.value,
+      type: event.target.activityType.value,
       participants: event.target.numberOfPeople.value,
     };
     addActivity(newActivityPost);
@@ -33,19 +33,26 @@ function AddYourOwn() {
   return (
     <form className="addYourOwnStyling" onSubmit={handleSubmit}>
       <h1>Add Your Own Activity To The Database</h1>
-      <label htmlFor="fname">First name:</label>
-      <input type="text" id="fname" name="fname" />
+      <div>
+        <label htmlFor="fname">First name:</label>
+        <input type="text" id="fname" name="fname" />
+      </div>
 
-      <label htmlFor="lname">Last name:</label>
-      <input type="text" id="lname" name="lname" />
-      <p>Activity Type</p>
-      <textarea rows="4" cols="50" name="comment" id="comment">
-        Enter text here...
-      </textarea>
+      <div>
+        <label htmlFor="lname">Last name:</label>
+        <input type="text" id="lname" name="lname" />
+      </div>
+
+      <div>
+        <p>Your Activity:</p>
+        <textarea rows="4" cols="50" name="activity" id="comment">
+          Enter text here...
+        </textarea>
+      </div>
 
       <label htmlFor="type">Choose a activty type:</label>
 
-      <select name="activity" className="typeAddOwn">
+      <select name="activityType" className="typeAddOwn">
         <option value="cooking">Cooking</option>
         <option value="relaxation">Relaxation</option>
         <option value="recreational">Recreational</option>

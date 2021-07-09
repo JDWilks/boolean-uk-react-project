@@ -11,9 +11,8 @@ import HeaderOwn from "./Components/HeaderOwn";
 
 function App() {
   const [randomQuote, setRandomQuote] = useState();
-  const [activtyType, setActivityType] = useState();
+  const [activtyType, setActivityType] = useState("cooking");
   const [activityNuPeople, setActivityNuPeople] = useState(1);
-  const [favouriteQuote, setFavouriteQuote] = useState(null);
 
   return (
     <div className="App">
@@ -28,17 +27,12 @@ function App() {
               activtyType={activtyType}
               activityNuPeople={activityNuPeople}
               setActivityNuPeople={setActivityNuPeople}
-              favouriteQuote={favouriteQuote}
-              setFavouriteQuote={setFavouriteQuote}
             />
           </Route>
 
           <Route path="/favourites" exact>
             <HeaderFav />
-            <Favourites
-              favouriteQuote={favouriteQuote}
-              setFavouriteQuote={setFavouriteQuote}
-            />
+            <Favourites />
           </Route>
 
           <Route path="/addyourown" exact>

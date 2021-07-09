@@ -11,22 +11,7 @@ function MainBody({
   setActivityType,
   activityNuPeople,
   setActivityNuPeople,
-  setFavouriteQuote,
-  favouriteQuote,
 }) {
-  useEffect(() => {
-    if (!favouriteQuote) return;
-    fetch("http://localhost:3030/favourites", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(favouriteQuote),
-    })
-      .then((response) => response.json())
-      .then((activity) => {
-        console.log("great you did it-make it appear on the page now");
-      });
-  }, [favouriteQuote]);
-
   function randomiseQuotes() {
     return fetch("http://www.boredapi.com/api/activity/").then((response) =>
       response.json()
@@ -44,7 +29,7 @@ function MainBody({
     ).then((response) => response.json());
   }
 
-  if (!randomQuote) return <h1>Hold your horses....</h1>;
+  // if (!randomQuote) return <h1>Hold your horses....</h1>;
 
   function handleChange(event) {
     if (event.target.name === "type") {
@@ -103,11 +88,11 @@ function MainBody({
                 setRandomQuote(quote);
               } else {
                 fetch(
-                  `http://localhost:3030/activities?type=${activtyType}&participants=${activityNuPeople}`.then(
-                    console.log("this is the quote from json i think ", quote)
-                  )
+                  `http://localhost:3030/activities?type=${activtyType}&participants=${activityNuPeople}`
                 ).then((response) =>
-                  response.json().then(setRandomQuote(quote))
+                  response.json().then((matches) => {
+                    setRandomQuote(matches[0]);
+                  })
                 );
               }
             });
@@ -116,54 +101,59 @@ function MainBody({
           search
         </button>
       </section>
-      <section className="quoteStyling">
-        <div className="quoteOnPage">
-          <div className="quoteStying">
-            <h1 className="activityStyle">
-              <span className="spanMainQuote">
-                Activity:&nbsp;&nbsp;&nbsp;&nbsp;{" "}
-              </span>
-              {randomQuote.activity}
-            </h1>
-            <h2 className="typeStyle">
-              <span className="spanMainQuote">
-                Type:&nbsp;&nbsp;&nbsp;&nbsp;{" "}
-              </span>
-              {randomQuote.type}
-            </h2>
-            <h3 className="participantsStyle">
-              <span className="spanMainQuote">
-                Participants:&nbsp;&nbsp;&nbsp;&nbsp;{" "}
-              </span>
-              {randomQuote.participants}
-            </h3>
+      {randomQuote !== undefined ? (
+        <section className="quoteStyling">
+          <div className="quoteOnPage">
+            <div className="quoteStying">
+              <h1 className="activityStyle">
+                <span className="spanMainQuote">
+                  Activity:&nbsp;&nbsp;&nbsp;&nbsp;{" "}
+                </span>
+                {randomQuote.activity}
+              </h1>
+              <h2 className="typeStyle">
+                <span className="spanMainQuote">
+                  Type:&nbsp;&nbsp;&nbsp;&nbsp;{" "}
+                </span>
+                {randomQuote.type}
+              </h2>
+              <h3 className="participantsStyle">
+                <span className="spanMainQuote">
+                  Participants:&nbsp;&nbsp;&nbsp;&nbsp;{" "}
+                </span>
+                {randomQuote.participants}
+              </h3>
+            </div>
+            <div className="favBttnDiv">
+              <button
+                className="addFavouritesButton"
+                onClick={() => {
+                  fetch("http://localhost:3030/favourites", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(randomQuote),
+                  });
+                }}
+              >
+                <span>
+                  {" "}
+                  <img className="hearticon" src={heart} alt="heart" />
+                </span>
+              </button>
+            </div>
           </div>
-          <div className="favBttnDiv">
-            <button
-              className="addFavouritesButton"
-              onClick={() => {
-                setFavouriteQuote(randomQuote);
-              }}
-            >
-              <span>
-                {" "}
-                <img
-                  className="hearticon"
-                  src={heart}
-                  alt="lightbulb or something image for here"
-                />
-              </span>
-            </button>
+          <div className="imageDiv">
+            <img
+              className="lightBulbIcon"
+              src="https://www.animatedimages.org/data/media/1543/animated-snoopy-image-0030.gif"
+              alt="lightbulb or something image for here"
+            />
           </div>
-        </div>
-        <div className="imageDiv">
-          <img
-            className="lightBulbIcon"
-            src={undraw_lightbulb_moment_re_ulyo}
-            alt="lightbulb or something image for here"
-          />
-        </div>
-      </section>
+        </section>
+      ) : (
+        <h1>No quote found please try again</h1>
+      )}
+
       <section className="addFavSection">
         <div className="addYourOwnButton">
           <Link className="addYourOwnText" to="/addyourown">
@@ -182,3 +172,5 @@ function MainBody({
 }
 
 export default MainBody;
+
+//

@@ -47,4 +47,8 @@
     #c4c8c8
   );
   height: calc(100vh - 260px);
+  font-family: "Roboto", sans-serif;
+  font-style: italic;
+  font-size: 1.5vw;
+  color: white;
 }
