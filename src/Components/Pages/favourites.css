@@ -1,17 +1,35 @@
 .backButtonFavPage {
-  background: linear-gradient(90deg, #8360c3 0%, #2ebf91 100%);
+  background-image: linear-gradient(
+    to right,
+    #afa9ac,
+    #b5a6b2,
+    #b6a3bb,
+    #b1a3c8,
+    #a5a4d5,
+    #99aada,
+    #8db0de,
+    #82b5df,
+    #8cbcd6,
+    #9cc1ce,
+    #b0c5c9,
+    #c4c8c8
+  );
   height: calc(100vh - 260px);
+  overflow: scroll;
 }
-
-/* .quoteOnPageFavPage {
-} */
 
 .activityStyleFavPage {
-  overflow: scroll;
   padding-left: 60px;
-  line-height: 2;
+  /* line-height: 1; */
   color: white;
+  font-family: "Roboto", sans-serif;
+  font-style: italic;
+  font-size: 1.2vw;
 }
 
-background: linear-gradient(90deg, #8360c3 0%, #2ebf91 100%);
-height: calc(100vh - 260px);
+.deleteButton {
+  background-color: transparent;
+  border: none;
+  color: red;
+  height: 120px;
+}

@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import "./mainBody.css";
 import { Link } from "react-router-dom";
+import heart from "./icons/heart.png";
+import undraw_lightbulb_moment_re_ulyo from "./icons/undraw_lightbulb_moment_re_ulyo.svg";
 
 function MainBody({
   randomQuote,
@@ -12,17 +14,6 @@ function MainBody({
   setFavouriteQuote,
   favouriteQuote,
 }) {
-  function sendFavToServer() {
-    // fetch("http://localhost:3030/favourites", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(favouriteQuote),
-    // })
-    //   .then((response) => response.json())
-    //   .then((activity) => {
-    //     console.log("great you did it-make it appear on the page now");
-    //   });
-  }
   useEffect(() => {
     if (!favouriteQuote) return;
     fetch("http://localhost:3030/favourites", {
@@ -44,6 +35,7 @@ function MainBody({
 
   useEffect(() => {
     randomiseQuotes().then(setRandomQuote);
+    console.log;
   }, []);
 
   function searchResultsQuotes() {
@@ -74,11 +66,9 @@ function MainBody({
           Click For Random Activity
         </button>
 
-        {/* <div className="searchCopy">
-          <p> Or Search Here</p>
-        </div> */}
-
-        <label htmlFor="type">Choose a activty type:</label>
+        <label className="labelStyling" htmlFor="type">
+          Choose a activty type:
+        </label>
 
         <select name="type" className="type" onChange={handleChange}>
           <option value="cooking">Cooking</option>
@@ -92,7 +82,9 @@ function MainBody({
           <option value="diy">DIY</option>
         </select>
 
-        <label htmlFor="people">Choose how many people:</label>
+        <label className="labelStyling" htmlFor="people">
+          Choose how many people:
+        </label>
 
         <select name="people" className="people" onChange={handleChange}>
           <option value="1">1</option>
@@ -107,12 +99,16 @@ function MainBody({
           onClick={() => {
             searchResultsQuotes().then((quote) => {
               console.log("this is the quote", quote);
-              if (quote.error) {
-                alert(
-                  "Please try a different category or participants number - this api is rubbish"
-                );
-              } else {
+              if (!quote.error) {
                 setRandomQuote(quote);
+              } else {
+                fetch(
+                  `http://localhost:3030/activities?type=${activtyType}&participants=${activityNuPeople}`.then(
+                    console.log("this is the quote from json i think ", quote)
+                  )
+                ).then((response) =>
+                  response.json().then(setRandomQuote(quote))
+                );
               }
             });
           }}
@@ -122,17 +118,23 @@ function MainBody({
       </section>
       <section className="quoteStyling">
         <div className="quoteOnPage">
-          <div>
+          <div className="quoteStying">
             <h1 className="activityStyle">
-              <span className="spanMainQuote">➡ Activity: </span>
+              <span className="spanMainQuote">
+                Activity:&nbsp;&nbsp;&nbsp;&nbsp;{" "}
+              </span>
               {randomQuote.activity}
             </h1>
             <h2 className="typeStyle">
-              <span className="spanMainQuote">➡ Type: </span>
+              <span className="spanMainQuote">
+                Type:&nbsp;&nbsp;&nbsp;&nbsp;{" "}
+              </span>
               {randomQuote.type}
             </h2>
             <h3 className="participantsStyle">
-              <span className="spanMainQuote">➡ Participants: </span>
+              <span className="spanMainQuote">
+                Participants:&nbsp;&nbsp;&nbsp;&nbsp;{" "}
+              </span>
               {randomQuote.participants}
             </h3>
           </div>
@@ -143,12 +145,23 @@ function MainBody({
                 setFavouriteQuote(randomQuote);
               }}
             >
-              Add this wonderful activity to your favourites
+              <span>
+                {" "}
+                <img
+                  className="hearticon"
+                  src={heart}
+                  alt="lightbulb or something image for here"
+                />
+              </span>
             </button>
           </div>
         </div>
         <div className="imageDiv">
-          <img src="" alt="lightbulb or something image for here" />
+          <img
+            className="lightBulbIcon"
+            src={undraw_lightbulb_moment_re_ulyo}
+            alt="lightbulb or something image for here"
+          />
         </div>
       </section>
       <section className="addFavSection">

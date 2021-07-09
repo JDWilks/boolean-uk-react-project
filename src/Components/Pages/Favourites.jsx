@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./favourites.css";
 
@@ -15,18 +14,46 @@ function Favourites({ favouriteQuote, setFavouriteQuote }) {
     getfavFromServer().then(setFavOnPage);
   }, []);
 
+  function deleteFav(favToDelete) {
+    fetch(`http://localhost:3030/favourites/${favToDelete.id}`, {
+      method: "DELETE",
+    }).then(() => {
+      setFavOnPage(favOnPage.filter((fav) => fav.id !== favToDelete.id));
+    });
+  }
+
+  // function deleteDog(dogToDelete) {
+  //   fetch(`http://localhost:4000/dogs/${dogToDelete.id}`, {
+  //     method: "DELETE",
+  //   }).then(() => {
+  //     setDogs(dogs.filter((dog) => dog.id !== dogToDelete.id));
+  //     history.push("/");
+  //   });
+  // }
+
   return (
     <body className="backButtonFavPage">
       <div className="quoteOnPageFavPage">
         <div>
           <h1 className="activityStyleFavPage">
             {favOnPage.map((fav) => (
-              <p> {fav.activity} </p>
+              <p>
+                {" "}
+                {fav.activity}{" "}
+                <button
+                  className="deleteButton"
+                  onClick={() => {
+                    console.log("you clicked delete");
+                    deleteFav(fav);
+                  }}
+                >
+                  Ⓧ
+                </button>
+              </p>
             ))}
           </h1>
         </div>
       </div>
-      <Link to="/">Back To The Beautiful Home Page</Link>
     </body>
   );
 }

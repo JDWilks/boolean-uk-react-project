@@ -70,7 +70,9 @@ function AddYourOwn() {
       <input type="submit" value="Submit" />
 
       <button className="backButton">
-        <Link to="/">Back To The Beautiful Home Page</Link>
+        <Link className="backBttnText" to="/">
+          Back To The Beautiful Home Page
+        </Link>
       </button>
     </form>
   );

@@ -1,5 +1,19 @@
 .mainBodyStyling {
-  background: linear-gradient(90deg, #8360c3 0%, #2ebf91 100%);
+  background-image: linear-gradient(
+    to right,
+    #afa9ac,
+    #b5a6b2,
+    #b6a3bb,
+    #b1a3c8,
+    #a5a4d5,
+    #99aada,
+    #8db0de,
+    #82b5df,
+    #8cbcd6,
+    #9cc1ce,
+    #b0c5c9,
+    #c4c8c8
+  );
   height: calc(100vh - 260px);
 }
 
@@ -18,13 +32,18 @@
 .participantsStyle {
   font-family: "Roboto", sans-serif;
   font-style: italic;
-  font-size: 2vw;
+  font-size: 1.5vw;
   color: white;
 }
 
+.quoteStying {
+  line-height: 2;
+}
+
 .spanMainQuote {
-  color: black;
-  font-style: none;
+  color: rgb(66, 65, 65);
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5vw;
 }
 
 .buttonsForSearch {
@@ -33,12 +52,11 @@
   grid-auto-flow: column;
   text-align: center;
   grid-gap: 20px;
+  /* justify-content: center; */
 }
 
 .addFavSection {
   padding: 30px;
-  /* display: grid;
-  grid-auto-flow: column; */
 }
 
 .randomButton,
@@ -48,9 +66,12 @@
 .addFavouritesButton {
   border-radius: 5px;
   padding: 10px;
-  background-color: #4e4caf;
+
   border: none;
   color: white;
+  background: transparent;
+
+  border: 2px solid #4e4caf77;
 
   text-align: center;
   text-decoration: none;
@@ -66,7 +87,22 @@
 .type:hover,
 .people:hover,
 .search:hover {
-  background-color: #6565eb; /* Green */
+  background-color: #86a8e7;
+}
+
+.addYourOwnButton:active,
+.viewFavouitesButton:active,
+.viewFavouitesButton:active,
+.addFavouritesButton:active,
+.randomButton:active,
+.type:active,
+.people:active,
+.search:active {
+  background-color: #6a94e2;
+}
+
+.addFavouritesButton:active {
+  background-color: rgba(255, 192, 203, 0.493);
 }
 
 .addYourOwnButton,
@@ -78,17 +114,31 @@
   justify-self: center;
   border-radius: 5px;
 
-  background-color: #4e4caf;
-  border: none;
-
   text-align: center;
 
   font-size: 14px;
   margin: 30px;
+
+  border-radius: 5px;
+  padding: 10px;
+
+  color: white;
+  background: transparent;
+
+  border: 2px solid #4e4caf77;
+
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
 }
 
-.heartIcon {
+.hearticon {
   height: 40px;
+}
+
+.lightBulbIcon {
+  height: 200px;
 }
 
 .addFavouritesButton {
@@ -99,4 +149,11 @@
 .goToFavText {
   color: white;
   text-decoration: none;
+}
+
+.labelStyling {
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-size: 1vw;
+  padding: 20px;
 }

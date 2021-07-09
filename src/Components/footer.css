@@ -3,7 +3,21 @@
   bottom: 0;
   width: 100%;
   height: 60px;
-  background: linear-gradient(90deg, #8360c3 0%, #2ebf91 100%);
+  background-image: linear-gradient(
+    to right,
+    #afa9ac,
+    #b5a6b2,
+    #b6a3bb,
+    #b1a3c8,
+    #a5a4d5,
+    #99aada,
+    #8db0de,
+    #82b5df,
+    #8cbcd6,
+    #9cc1ce,
+    #b0c5c9,
+    #c4c8c8
+  );
 }
 
 .footerstyle {
