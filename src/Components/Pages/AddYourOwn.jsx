@@ -50,31 +50,35 @@ function AddYourOwn() {
         </textarea>
       </div>
 
-      <label htmlFor="type">Choose a activty type:</label>
+      <div>
+        <label htmlFor="type">Choose a activty type:</label>
 
-      <select name="activityType" className="typeAddOwn">
-        <option value="cooking">Cooking</option>
-        <option value="relaxation">Relaxation</option>
-        <option value="recreational">Recreational</option>
-        <option value="busywork">Busywork</option>
-        <option value="education">Education</option>
-        <option value="social">Social</option>
-        <option value="charity">Charity</option>
-        <option value="music">Music</option>
-        <option value="diy">DIY</option>
-      </select>
+        <select name="activityType" className="typeAddOwn">
+          <option value="cooking">Cooking</option>
+          <option value="relaxation">Relaxation</option>
+          <option value="recreational">Recreational</option>
+          <option value="busywork">Busywork</option>
+          <option value="education">Education</option>
+          <option value="social">Social</option>
+          <option value="charity">Charity</option>
+          <option value="music">Music</option>
+          <option value="diy">DIY</option>
+        </select>
+      </div>
 
-      <label htmlFor="people">Choose how many people:</label>
+      <div>
+        <label htmlFor="people">Choose how many people:</label>
 
-      <select name="numberOfPeople" className="peopleAddOwn">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
+        <select name="numberOfPeople" className="peopleAddOwn">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
 
-      <input type="submit" value="Submit" />
+      <input className="submitButton" type="submit" value="Submit" />
 
       <button className="backButton">
         <Link className="backBttnText" to="/">

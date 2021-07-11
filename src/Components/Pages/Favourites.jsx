@@ -30,7 +30,7 @@ function Favourites() {
             {favOnPage.map((fav) => (
               <p>
                 {" "}
-                {fav.activity}{" "}
+                *&nbsp;&nbsp;&nbsp;&nbsp;{fav.activity}{" "}
                 <button
                   className="deleteButton"
                   onClick={() => {

@@ -7,7 +7,12 @@
 
 .backButton {
   width: -webkit-fill-available;
+  background-color: #5b8eec;
+  border-radius: 10px;
+}
+.backButton:hover {
   background-color: #276cec;
+  border-radius: 10px;
 }
 
 .backBttnText {
@@ -28,6 +33,14 @@
   text-decoration: none;
   display: inline-block;
   font-size: 14px;
+  margin-left: 30px;
+}
+
+.typeAddOwn {
+  width: 150px;
+}
+.peopleAddOwn {
+  width: 100px;
 }
 
 .addYourOwnStyling {
@@ -50,5 +63,19 @@
   font-family: "Roboto", sans-serif;
   font-style: italic;
   font-size: 1.5vw;
-  color: white;
+  /* color: white; */
+}
+
+#fname,
+#lname {
+  margin-left: 30px;
+  width: 270px;
+}
+
+.submitButton {
+  border-radius: 30px;
+}
+
+.submitButton:hover {
+  background-color: #5b8eec;
 }

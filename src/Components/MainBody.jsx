@@ -29,8 +29,6 @@ function MainBody({
     ).then((response) => response.json());
   }
 
-  // if (!randomQuote) return <h1>Hold your horses....</h1>;
-
   function handleChange(event) {
     if (event.target.name === "type") {
       setActivityType(event.target.value);
@@ -128,6 +126,60 @@ function MainBody({
               <button
                 className="addFavouritesButton"
                 onClick={() => {
+                  const newFavourite = {
+                    activity: randomQuote.activity,
+                    type: randomQuote.type,
+                    participants: randomQuote.participants,
+                  };
+                  fetch("http://localhost:3030/favourites", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(newFavourite),
+                  });
+                }}
+              >
+                <span>
+                  {" "}
+                  <img className="hearticon" src={heart} alt="heart" />
+                </span>
+              </button>
+            </div>
+          </div>
+          <div className="imageDiv">
+            <img
+              className="lightBulbIcon"
+              src="https://www.animatedimages.org/data/media/1543/animated-snoopy-image-0030.gif"
+              alt="snoopy"
+            />
+          </div>
+        </section>
+      ) : (
+        <section className="quoteStyling">
+          <div className="quoteOnPage">
+            <div className="quoteStying">
+              <h1 className="activityStyle">
+                <span className="spanMainQuote">
+                  Activity:&nbsp;&nbsp;&nbsp;&nbsp;{" "}
+                </span>
+                No activity found...
+              </h1>
+              <h2 className="typeStyle">
+                <span className="spanMainQuote">
+                  Type:&nbsp;&nbsp;&nbsp;&nbsp;{" "}
+                </span>
+                ...Please search using different parameters...
+              </h2>
+              <h3 className="participantsStyle">
+                <span className="spanMainQuote">
+                  Participants:&nbsp;&nbsp;&nbsp;&nbsp;{" "}
+                </span>
+                ...Or add your own activity...
+              </h3>
+            </div>
+            <div className="favBttnDiv">
+              <button
+                className="addFavouritesButton"
+                onClick={() => {
                   fetch("http://localhost:3030/favourites", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
@@ -145,13 +197,11 @@ function MainBody({
           <div className="imageDiv">
             <img
               className="lightBulbIcon"
-              src="https://www.animatedimages.org/data/media/1543/animated-snoopy-image-0030.gif"
+              src="https://www.animatedimages.org/data/media/1543/animated-snoopy-image-0046.gif"
               alt="lightbulb or something image for here"
             />
           </div>
         </section>
-      ) : (
-        <h1>No quote found please try again</h1>
       )}
 
       <section className="addFavSection">
