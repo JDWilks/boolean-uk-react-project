@@ -2,7 +2,14 @@ import { useEffect } from "react";
 import "./mainBody.css";
 import { Link } from "react-router-dom";
 import heart from "./icons/heart.png";
-import undraw_lightbulb_moment_re_ulyo from "./icons/undraw_lightbulb_moment_re_ulyo.svg";
+import {
+  randomiseQuotes,
+  searchResultsQuotes,
+} from "./Functions&UseEffect/APIFunctions";
+
+import ActivitySelect from "./TopLevelSearchEl/ActivitySelect";
+import RandomButton from "./buttons/RandomButton";
+import PeopleSelect from "./TopLevelSearchEl/PeopleSelect";
 
 function MainBody({
   randomQuote,
@@ -12,22 +19,10 @@ function MainBody({
   activityNuPeople,
   setActivityNuPeople,
 }) {
-  function randomiseQuotes() {
-    return fetch("http://www.boredapi.com/api/activity/").then((response) =>
-      response.json()
-    );
-  }
-
   useEffect(() => {
     randomiseQuotes().then(setRandomQuote);
     console.log;
   }, []);
-
-  function searchResultsQuotes() {
-    return fetch(
-      `http://www.boredapi.com/api/activity?type=${activtyType}&participants=${activityNuPeople}`
-    ).then((response) => response.json());
-  }
 
   function handleChange(event) {
     if (event.target.name === "type") {
@@ -40,47 +35,16 @@ function MainBody({
   return (
     <body className="mainBodyStyling">
       <section className="buttonsForSearch">
-        <button
-          className="randomButton"
-          onClick={() => {
-            randomiseQuotes().then(setRandomQuote);
-          }}
-        >
-          Click For Random Activity
-        </button>
+        <RandomButton setRandomQuote={setRandomQuote} />
 
-        <label className="labelStyling" htmlFor="type">
-          Choose a activty type:
-        </label>
+        <ActivitySelect handleChange={handleChange} />
 
-        <select name="type" className="type" onChange={handleChange}>
-          <option value="cooking">Cooking</option>
-          <option value="relaxation">Relaxation</option>
-          <option value="recreational">Recreational</option>
-          <option value="busywork">Busywork</option>
-          <option value="education">Education</option>
-          <option value="social">Social</option>
-          <option value="charity">Charity</option>
-          <option value="music">Music</option>
-          <option value="diy">DIY</option>
-        </select>
-
-        <label className="labelStyling" htmlFor="people">
-          Choose how many people:
-        </label>
-
-        <select name="people" className="people" onChange={handleChange}>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
+        <PeopleSelect handleChange={handleChange} />
 
         <button
           className="search"
           onClick={() => {
-            searchResultsQuotes().then((quote) => {
+            searchResultsQuotes(activtyType, activityNuPeople).then((quote) => {
               console.log("this is the quote", quote);
               if (!quote.error) {
                 setRandomQuote(quote);
